@@ -73,24 +73,22 @@ const BlogPostPage = ({ post, canonicalUrl }: BlogPostPageProps) => {
         <meta name="twitter:title" content={post.title} />
         <meta name="twitter:description" content={post.description} />
       </Head>
-      <div className="container mx-auto max-w-7xl px-4 py-20">
-        <article className="max-w-none">
-          <AnimateInBlock order={1}>
-            <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
-          </AnimateInBlock>
-          <AnimateInBlock order={2}>
-            <time dateTime={post.date} className="text-gray-500 block mb-8">
-              {new Date(post.date).toLocaleDateString()}
-            </time>
-          </AnimateInBlock>
-          <AnimateInBlock order={3}>
-            <div
-              className="prose lg:prose-xl prose-invert"
-              dangerouslySetInnerHTML={{ __html: post.htmlContent }}
-            />
-          </AnimateInBlock>
-        </article>
-      </div>
+      <article className="max-w-none space-y-8">
+        <AnimateInBlock order={1}>
+          <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
+        </AnimateInBlock>
+        <AnimateInBlock order={2}>
+          <time dateTime={post.date} className="text-gray-500 block">
+            {new Date(post.date).toLocaleDateString()}
+          </time>
+        </AnimateInBlock>
+        <AnimateInBlock order={3}>
+          <div
+            className="prose lg:prose-xl prose-invert"
+            dangerouslySetInnerHTML={{ __html: post.htmlContent }}
+          />
+        </AnimateInBlock>
+      </article>
     </>
   );
 };

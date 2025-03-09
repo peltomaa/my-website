@@ -11,7 +11,7 @@ export default function Document() {
       <body className="dark min-h-screen flex flex-col">
         <Navigation />
 
-        <div className="grow">
+        <div className="grow container mx-auto max-w-7xl py-10 p-4">
           <Main />
         </div>
         <Footer />

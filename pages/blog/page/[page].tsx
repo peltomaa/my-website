@@ -12,6 +12,7 @@ import {
   PaginationNext,
   PaginationEllipsis,
 } from "../../../components/ui/pagination";
+import { SectionHeader } from "@/components/SectionHeader";
 
 const POSTS_PER_PAGE = 5;
 
@@ -62,7 +63,7 @@ const BlogPage = ({
   currentPage: number;
 }) => {
   return (
-    <>
+    <div className="space-y-8">
       <Head>
         <title>Touko Peltomaa - Blog</title>
         <meta
@@ -71,96 +72,95 @@ const BlogPage = ({
         />
       </Head>
       <AnimateInBlock order={1}>
-        <div className="container mx-auto max-w-7xl px-4 py-20">
-          <h1 className="text-4xl font-bold mb-8">Blog</h1>
-
-          <div className="grid grid-cols-1 gap-8 mb-12">
-            {posts.map((post) => (
-              <AnimateInBlock key={post.slug} order={posts.indexOf(post) + 1}>
-                <BlogCard
-                  title={post.title}
-                  description={post.description}
-                  date={post.date}
-                  link={`/blog/${post.slug}`}
-                />
-              </AnimateInBlock>
-            ))}
-          </div>
-
-          <AnimateInBlock order={posts.length + 2}>
-            <Pagination>
-              <PaginationContent>
-                {currentPage > 0 && (
-                  <PaginationItem>
-                    <Link href={`/blog/page/${currentPage - 1}`} passHref>
-                      <PaginationPrevious>Previous</PaginationPrevious>
-                    </Link>
-                  </PaginationItem>
-                )}
-
-                {currentPage > 1 && (
-                  <PaginationItem>
-                    <Link href={`/blog/page/0`} passHref>
-                      <PaginationLink>0</PaginationLink>
-                    </Link>
-                  </PaginationItem>
-                )}
-
-                {currentPage > 2 && (
-                  <PaginationItem>
-                    <PaginationEllipsis />
-                  </PaginationItem>
-                )}
-
-                {currentPage > 0 && (
-                  <PaginationItem>
-                    <Link href={`/blog/page/${currentPage - 1}`} passHref>
-                      <PaginationLink>{currentPage - 1}</PaginationLink>
-                    </Link>
-                  </PaginationItem>
-                )}
-
-                <PaginationItem>
-                  <Link href={`/blog/page/${currentPage}`} passHref>
-                    <PaginationLink isActive>{currentPage}</PaginationLink>
-                  </Link>
-                </PaginationItem>
-
-                {currentPage < totalPages - 1 && (
-                  <PaginationItem>
-                    <Link href={`/blog/page/${currentPage + 1}`} passHref>
-                      <PaginationLink>{currentPage + 1}</PaginationLink>
-                    </Link>
-                  </PaginationItem>
-                )}
-
-                {currentPage < totalPages - 3 && (
-                  <PaginationItem>
-                    <PaginationEllipsis />
-                  </PaginationItem>
-                )}
-
-                {currentPage < totalPages - 2 && (
-                  <PaginationItem>
-                    <Link href={`/blog/page/${totalPages - 1}`} passHref>
-                      <PaginationLink>{totalPages - 1}</PaginationLink>
-                    </Link>
-                  </PaginationItem>
-                )}
-
-                {currentPage < totalPages - 1 && (
-                  <PaginationItem>
-                    <Link href={`/blog/page/${currentPage + 1}`} passHref>
-                      <PaginationNext>Next</PaginationNext>
-                    </Link>
-                  </PaginationItem>
-                )}
-              </PaginationContent>
-            </Pagination>
-          </AnimateInBlock>
-        </div>
+        <SectionHeader
+          title="Blog"
+          description="My thoughts on software development, technology, and best practices."
+        />
       </AnimateInBlock>
-    </>
+      <div className="space-y-4">
+        {posts.map((post) => (
+          <AnimateInBlock key={post.slug} order={posts.indexOf(post) + 1}>
+            <BlogCard
+              title={post.title}
+              description={post.description}
+              date={post.date}
+              link={`/blog/${post.slug}`}
+            />
+          </AnimateInBlock>
+        ))}
+      </div>
+      <AnimateInBlock order={posts.length + 2}>
+        <Pagination>
+          <PaginationContent>
+            {currentPage > 0 && (
+              <PaginationItem>
+                <Link href={`/blog/page/${currentPage - 1}`} passHref>
+                  <PaginationPrevious>Previous</PaginationPrevious>
+                </Link>
+              </PaginationItem>
+            )}
+
+            {currentPage > 1 && (
+              <PaginationItem>
+                <Link href={`/blog/page/0`} passHref>
+                  <PaginationLink>0</PaginationLink>
+                </Link>
+              </PaginationItem>
+            )}
+
+            {currentPage > 2 && (
+              <PaginationItem>
+                <PaginationEllipsis />
+              </PaginationItem>
+            )}
+
+            {currentPage > 0 && (
+              <PaginationItem>
+                <Link href={`/blog/page/${currentPage - 1}`} passHref>
+                  <PaginationLink>{currentPage - 1}</PaginationLink>
+                </Link>
+              </PaginationItem>
+            )}
+
+            <PaginationItem>
+              <Link href={`/blog/page/${currentPage}`} passHref>
+                <PaginationLink isActive>{currentPage}</PaginationLink>
+              </Link>
+            </PaginationItem>
+
+            {currentPage < totalPages - 1 && (
+              <PaginationItem>
+                <Link href={`/blog/page/${currentPage + 1}`} passHref>
+                  <PaginationLink>{currentPage + 1}</PaginationLink>
+                </Link>
+              </PaginationItem>
+            )}
+
+            {currentPage < totalPages - 3 && (
+              <PaginationItem>
+                <PaginationEllipsis />
+              </PaginationItem>
+            )}
+
+            {currentPage < totalPages - 2 && (
+              <PaginationItem>
+                <Link href={`/blog/page/${totalPages - 1}`} passHref>
+                  <PaginationLink>{totalPages - 1}</PaginationLink>
+                </Link>
+              </PaginationItem>
+            )}
+
+            {currentPage < totalPages - 1 && (
+              <PaginationItem>
+                <Link href={`/blog/page/${currentPage + 1}`} passHref>
+                  <PaginationNext>Next</PaginationNext>
+                </Link>
+              </PaginationItem>
+            )}
+          </PaginationContent>
+        </Pagination>
+      </AnimateInBlock>
+    </div>
   );
 };
 

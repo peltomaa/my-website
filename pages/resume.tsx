@@ -6,7 +6,7 @@ import { SectionHeader } from "@/components/SectionHeader";
 
 const ResumePage = () => {
   return (
-    <>
+    <div className="space-y-10">
       <Head>
         <title>Touko Peltomaa - Resume</title>
         <meta
@@ -15,16 +15,16 @@ const ResumePage = () => {
         />
       </Head>
       <AnimateInBlock order={1}>
-        <div className="container mx-auto max-w-7xl px-4 py-20">
-          <SectionHeader
-            title="Resume"
-            description="Here's a summary of my experience, showcasing key roles, projects,
+        <SectionHeader
+          title="Resume"
+          description="Here's a summary of my experience, showcasing key roles, projects,
             and the technologies I've mastered."
-          />
-          <Timeline items={CAREER_TIMELINE} showDescriptionList />
-        </div>
+        />
       </AnimateInBlock>
-    </>
+      <AnimateInBlock order={2}>
+        <Timeline items={CAREER_TIMELINE} showDescriptionList />
+      </AnimateInBlock>
+    </div>
   );
 };
 
