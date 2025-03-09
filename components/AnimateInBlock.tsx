@@ -3,25 +3,29 @@ import React from "react";
 interface AnimateInBlockProps {
   children: React.ReactNode;
   order: number;
-  duration?: number;
+  durationMs?: number;
+  delayMs?: number;
+  as?: React.ElementType;
 }
 
 export function AnimateInBlock({
   children,
   order,
-  duration = 500,
+  durationMs = 500,
+  delayMs = 200,
+  as: Component = "div",
 }: AnimateInBlockProps) {
-  const delay = `${100 + (order - 1) * 200}ms`;
+  const delay = `${100 + (order - 1) * delayMs}ms`;
 
   return (
-    <div
+    <Component
       className="opacity-0 animate-[slideUp_ease-out_forwards]"
       style={{
         animationDelay: delay,
-        animationDuration: `${duration}ms`,
+        animationDuration: `${durationMs}ms`,
       }}
     >
       {children}
-    </div>
+    </Component>
   );
 }

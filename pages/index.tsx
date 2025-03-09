@@ -6,7 +6,7 @@ import { SectionHeader } from "../components/SectionHeader";
 import Link from "next/link";
 import Head from "next/head";
 import { getBlogPosts, BlogPost } from "@/utils/markdown.server";
-import { Timeline as CustomTimeline } from "../components/Timeline";
+import { Timeline } from "../components/Timeline";
 import { Button } from "@/components/ui/button";
 
 const CAREER_TEASER = CAREER_TIMELINE.slice(0, 3);
@@ -28,7 +28,17 @@ const Page = ({ posts }: PageProps) => {
       <AnimateInBlock order={1}>
         <h1 className="text-6xl font-bold mb-4">Touko Peltomaa</h1>
         <h2 className="text-2xl text-gray-400 mb-8">
-          Software Developer crafting efficient and scalable solutions
+          {"Software Developer crafting efficient and scalable solutions."
+            .split(" ")
+            .map((text, index) => (
+              <AnimateInBlock
+                order={2 + index}
+                delayMs={100}
+                durationMs={1000}
+                key={index}
+                as="span"
+              >{`${text} `}</AnimateInBlock>
+            ))}
         </h2>
         <div className="flex gap-4">
           <Button asChild>
@@ -48,7 +58,7 @@ const Page = ({ posts }: PageProps) => {
       </AnimateInBlock>
 
       <AnimateInBlock order={3}>
-        <CustomTimeline items={CAREER_TEASER} />
+        <Timeline items={CAREER_TEASER} animationOrder={3} />
         <AnimateInBlock order={4}>
           <Button color="light" className="mt-4">
             <Link href="/resume">View Full Resume</Link>
@@ -63,19 +73,18 @@ const Page = ({ posts }: PageProps) => {
         />
       </AnimateInBlock>
 
-      <AnimateInBlock order={5}>
-        <div className="grid grid-cols-1 gap-8">
-          {posts.slice(0, 3).map((post) => (
+      <div className="grid grid-cols-1 gap-8">
+        {posts.slice(0, 3).map((post, index) => (
+          <AnimateInBlock key={post.slug} order={5 + index}>
             <BlogCard
-              key={post.slug}
               title={post.title}
               description={post.description}
               date={post.date}
               link={`/blog/${post.slug}`}
             />
-          ))}
-        </div>
-      </AnimateInBlock>
+          </AnimateInBlock>
+        ))}
+      </div>
     </div>
   );
 };
