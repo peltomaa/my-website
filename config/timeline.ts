@@ -22,13 +22,12 @@ export const CAREER_TIMELINE: CareerTimelineItem[] = [
     icon: IoBusiness,
     technologies: ["React", "PHP", "TypeScript", "Node.js", "ClickHouse"],
     descriptionList: [
-      "Managed a team of 12 talented developers (frontend, backend, full-stack) building systems using React and PHP.",
-      "Lead implementation of usage tracking system collecting 2.1B+ data points annually, enabling customer fair-usage policies.",
-      "Led enhancements to user and organization management systems, optimizing both customer-facing platforms and internal tools, enabling highest-paying enterprise deals.",
-      "Created an intro survey used by 40% of customers, now a key tool for personalization and company decisions.",
-      "Enhanced customer platform’s frontend improving navigation, landing pages and home page for improved customer experience.",
-      "Led cross-team Roles & Permissions access control initiative building PHP permissions system and unified React component library for access control.",
-      "Conducted 50+ technical interviews resulting in hiring 10+ successful developers hires.",
+      "Led a team of 6 developers (frontend, backend, full-stack) owning IAM, organization, and user management for thousands of weekly active users across self-serve and enterprise customers.",
+      "Designed and implemented a ClickHouse-based architecture for usage tracking across thousands of weekly clients, processing billions of data points annually, empowering customers with usage insights via a dashboard and driving revenue by monetizing high-quota usage.",
+      "Designed a customer onboarding flow that captured survey data from a significant portion of users, enabling better understanding of customers, and enabling personalization for the whole organization.",
+      "Built a scalable information architecture for Supermetrics Hub, enabling cross-team rapid feature expansion with reusable navigation, home, and landing page components for an improved user experience.",
+      "Spearheaded a cross-team initiative to transition from Role-Based Access Control (RBAC) to a granular, scalable Permission-Based system.",
+      "Conducted 50+ technical interviews, successfully hiring 10+ developers.",
     ],
   },
   {
@@ -40,7 +39,7 @@ export const CAREER_TIMELINE: CareerTimelineItem[] = [
     icon: IoBusiness,
     technologies: ["React", "PHP", "TypeScript", "React Query"],
     descriptionList: [
-      "Led frontend for license and billing projects, adding $500K+ revenue in the first year.",
+      "Led frontend for license and billing projects, contributing to significant revenue growth in the first year.",
       "Built and maintained flagship products (Google Sheets, Excel, Data Studio) using React and PHP.",
       "Improved customer-facing platform’s frontend architecture with domain-driven design and introduced React Query.",
       "Mentored 10+ frontend engineers as chapter lead, organizing advanced TypeScript workshops.",
@@ -50,7 +49,7 @@ export const CAREER_TIMELINE: CareerTimelineItem[] = [
     title: "Bachelor of Science in Computer Science",
     subTitle:
       "Foundational Knowledge in Computer Science and Software Development",
-    date: "2019–Present",
+    date: "2019–",
     location: "Helsinki, Finland",
     company: "University of Helsinki",
     icon: IoSchool,
@@ -81,7 +80,7 @@ export const CAREER_TIMELINE: CareerTimelineItem[] = [
   {
     title: "Junior-/Mid Software Engineer",
     subTitle: "Developing Scalable APIs and Optimizing Mobile Applications",
-    date: "2017-2018",
+    date: "2017-2019",
     location: "Helsinki, Finland",
     company: "OPR-Finance",
     icon: IoBusiness,
