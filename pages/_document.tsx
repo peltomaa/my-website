@@ -8,7 +8,7 @@ export default function Document() {
       <Head>
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
       </Head>
-      <body className="dark min-h-screen flex flex-col">
+      <body className="dark min-h-screen flex flex-col bg-gradient-to-b from-gray-950 to-gray-900">
         <Navigation />
 
         <div className="grow container mx-auto max-w-7xl py-10 p-4">
