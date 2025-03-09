@@ -4,9 +4,11 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { Marked } from "marked";
 import { markedHighlight } from "marked-highlight";
 import hljs from "highlight.js";
+import Head from "next/head";
 
 interface BlogPostPageProps {
   post: BlogPost & { htmlContent: string };
+  canonicalUrl: string;
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -43,6 +45,7 @@ export const getStaticProps: GetStaticProps<
   );
 
   const htmlContent = await marked.parse(post.content);
+  const canonicalUrl = `https://toukopeltomaa.com/blog/${slug}`;
 
   return {
     props: {
@@ -50,30 +53,45 @@ export const getStaticProps: GetStaticProps<
         ...post,
         htmlContent,
       },
+      canonicalUrl,
     },
   };
 };
 
-const BlogPostPage = ({ post }: BlogPostPageProps) => {
+const BlogPostPage = ({ post, canonicalUrl }: BlogPostPageProps) => {
   return (
-    <div className="container mx-auto max-w-7xl px-4 py-20">
-      <article className="max-w-none">
-        <AnimateInBlock order={1}>
-          <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
-        </AnimateInBlock>
-        <AnimateInBlock order={2}>
-          <time dateTime={post.date} className="text-gray-500 block mb-8">
-            {new Date(post.date).toLocaleDateString()}
-          </time>
-        </AnimateInBlock>
-        <AnimateInBlock order={3}>
-          <div
-            className="prose lg:prose-xl prose-invert"
-            dangerouslySetInnerHTML={{ __html: post.htmlContent }}
-          />
-        </AnimateInBlock>
-      </article>
-    </div>
+    <>
+      <Head>
+        <title>{post.title} - Touko Peltomaa</title>
+        <meta name="description" content={post.description} />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.description} />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="article:published_time" content={post.date} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:description" content={post.description} />
+      </Head>
+      <div className="container mx-auto max-w-7xl px-4 py-20">
+        <article className="max-w-none">
+          <AnimateInBlock order={1}>
+            <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
+          </AnimateInBlock>
+          <AnimateInBlock order={2}>
+            <time dateTime={post.date} className="text-gray-500 block mb-8">
+              {new Date(post.date).toLocaleDateString()}
+            </time>
+          </AnimateInBlock>
+          <AnimateInBlock order={3}>
+            <div
+              className="prose lg:prose-xl prose-invert"
+              dangerouslySetInnerHTML={{ __html: post.htmlContent }}
+            />
+          </AnimateInBlock>
+        </article>
+      </div>
+    </>
   );
 };
 
