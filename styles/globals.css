@@ -140,6 +140,6 @@ body {
   100% {
     transform: translateY(0);
     opacity: 1;
-    filter: brightness(1) blur(0);
+     filter: brightness(1) blur(0px);
   }
 }
