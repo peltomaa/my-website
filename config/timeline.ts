@@ -22,8 +22,7 @@ export const CAREER_TIMELINE: CareerTimelineItem[] = [
     icon: IoBusiness,
     technologies: ["React", "TypeScript", "Node.js"],
     descriptionList: [
-      "Building foundational Storage 2.0, owning front-end development",
-      "Mentoring engineers at different levels to full technical ownership",
+      "Leading frontend development for an external and internal next-gen DWH product",
     ],
   },
   {
