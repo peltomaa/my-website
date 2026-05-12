@@ -28,11 +28,11 @@ export function Timeline({
             <CardHeader>
               <CardTitle>
                 {item.company ? `${item.title} - ${item.company}` : item.title}
-              </CardTitle>
-              <CardDescription>{item.date}</CardDescription>
-              {item.subTitle && (
-                <CardDescription>{item.subTitle}</CardDescription>
-              )}
+                </CardTitle>
+                {item.date && <CardDescription>{item.date}</CardDescription>}
+                {item.subTitle && (
+                  <CardDescription>{item.subTitle}</CardDescription>
+                )}
             </CardHeader>
             <CardContent className="space-y-4">
               {showDescriptionList && item.descriptionList && (
